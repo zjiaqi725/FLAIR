@@ -5,11 +5,11 @@ This repository contains the code for the paper "Dances with Drifts: Efficient a
 
 ## FLAIR Overview
 
-We propose a novel online adaptation framework called FLAIR, which can produce predictions adaptively under different concepts without retraining. Different from the existing approaches, \name presents a new online in-context adaptation paradigm that not only addresses the concept drift challenge inherent in AI-powered databases but also supports various downstream tasks. The key intuition behind \name draws from the in-context learning paradigm of large language models (LLMs), seamlessly integrating `contextual cues' from database environments to dynamically generate outputs that are acutely attuned to the current context.
+We propose a novel online adaptation framework called FLAIR, which can produce predictions adaptively under different concepts without retraining. Different from the existing approaches, FLAIR presents a new online in-context adaptation paradigm that not only addresses the concept drift challenge inherent in AI-powered databases but also supports various downstream tasks. The key intuition behind FLAIR draws from the in-context learning paradigm of large language models (LLMs), seamlessly integrating `contextual cues' from database environments to dynamically generate outputs that are acutely attuned to the current context.
 <p align="center">
 <img src="https://github.com/zjiaqi725/FLAIR/blob/main/fig/Framework.png" width="500">  
 </p>
-As illustrated in the figure, \name realizes in-context adaptation based on two cascaded modules. First, *the task featurization module (TFM)* is a customizable component that extracts informative and task-specific features for subsequent processing. Second, *the dynamic decision engine (DDE)* leverages the extracted features to deliver contextualized predictions given contextual information about the current concept.
+As illustrated in the figure, FLAIR realizes in-context adaptation based on two cascaded modules. First, *the task featurization module (TFM)* is a customizable component that extracts informative and task-specific features for subsequent processing. Second, *the dynamic decision engine (DDE)* leverages the extracted features to deliver contextualized predictions given contextual information about the current concept.
 
 ## Implementation
 
