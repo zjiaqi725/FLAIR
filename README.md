@@ -13,7 +13,7 @@ As illustrated in the figure, FLAIR realizes in-context adaptation based on two 
 
 ## Implementation
 
-#### Environment
+### Environment
 
 Clone the repository locally, and then create a virtual environment:
 
@@ -30,7 +30,7 @@ Install the required packages:
 - python src/init/initialize.py
 ```
 
-#### Install PostgreSQL (in Linux):
+### Install PostgreSQL (in Linux):
 
 ```bash
 - cd FLAIR
@@ -46,12 +46,12 @@ Install the required packages:
 
 We follow the PostgreSQL setup as [ALECE](https://github.com/pfl-cs/ALECE).
 
-#### Data and workload preparation
+### Data and workload preparation
 
 * Download the dataset and move it into `./data/STATS/data/`, which can be found in [Benchmark](https://drive.google.com/file/d/1la2GrR0F32GGmKE7TnNujx4K9-esS6wK/view?usp=sharing).
 * Download the workload and move it into `./data/STATS/workload/dist_shift_mild/` and `./data/STATS/workload/dist_shift_severe/`, which can be found in [Benchmark](https://drive.google.com/file/d/1la2GrR0F32GGmKE7TnNujx4K9-esS6wK/view?usp=sharing).
 
-#### Offline Training
+### Offline Training
 
 FLAIR is trained in two stages. In the first stage, the DDE module $\mathcal{M}_{DDE}$ undergoes a one-off meta-training phase across various task distributions.
 
@@ -65,7 +65,7 @@ Run the following scripts for two dynamic scenarios:
 - python main.py --model FLAIR --data STATS --wl_type dist_shift_severe --tfm_train 1
 ```
 
-#### Online Inference and Adaptation
+### Online Inference and Adaptation
 
 Once trained, FLAIR is ready for deployment in a real-time environment, performing concurrent online inference and adaptation under evolving concepts.
 
