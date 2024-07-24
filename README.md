@@ -48,14 +48,14 @@ We follow the PostgreSQL setup as [ALECE](https://github.com/pfl-cs/ALECE).
 
 #### Data and workload preparation
 
-* Download the dataset and move it into `./data/STATS/data/`, which can be found in [GoogleDrive](https://drive.google.com/file/d/1DEbplYxjyu_w-NDqvKfXO3i9Ug5X4TuQ/view?usp=sharing).
+* Download the dataset and move it into `./data/STATS/data/`, which can be found in [Benchmark](https://drive.google.com/file/d/1la2GrR0F32GGmKE7TnNujx4K9-esS6wK/view?usp=sharing).
 * Download the workload and move it into `./data/STATS/workload/dist_shift_mild/` and `./data/STATS/workload/dist_shift_severe/`, which can be found in [Benchmark](https://drive.google.com/file/d/1la2GrR0F32GGmKE7TnNujx4K9-esS6wK/view?usp=sharing).
 
 #### Offline Training
 
 FLAIR is trained in two stages. In the first stage, the DDE module $\mathcal{M}_{DDE}$ undergoes a one-off meta-training phase across various task distributions.
 
-We have released the [checkpoint files](https://drive.google.com/file/d/1jzbdo3SFrVx9zp954ejdfq9AtncRivb8/view?usp=sharing) for our DDE module, please move it into `./src/MetaDDE/models_diff/`. You can also train your own DDE from desired prior task distributions.
+We have released the [checkpoint file](https://drive.google.com/file/d/1jzbdo3SFrVx9zp954ejdfq9AtncRivb8/view?usp=sharing) for our DDE module, please move it into `./src/MetaDDE/models_diff/`. You can also train your own DDE from desired prior task distributions.
 
 In the second stage, the $\mathcal{M}_{TFM}$ module is trained to extract informative task features that are critical for the specific tasks at hand.
 Run the following scripts for two dynamic scenarios: 
