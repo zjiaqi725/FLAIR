@@ -63,19 +63,30 @@ In the second stage, the $\mathcal{M}_{TFM}$ module is trained to extract inform
 Run the following scripts for two dynamic scenarios: 
 
 ```bash
-- python main.py --model FLAIR --data STATS --wl_type dist_shift_mild --tfm_train 1
-- python main.py --model FLAIR --data STATS --wl_type dist_shift_severe --tfm_train 1
+- python main.py --model FLAIR --data STATS --batch_size 512 --wl_type dist_shift_mild --tfm_train 1 --n_epochs 20 --gpu 1
+- python main.py --model FLAIR --data STATS --batch_size 512 --wl_type dist_shift_severe --tfm_train 1 --n_epochs 20 --gpu 1
 ```
+Command line options:
+* model: name of the model, one of ["FLAIR", "pg"] or customer model name, default="FLAIR".
+* data: name of the dataset, default="STATS".
+* batch_size: batch size for training the TFM, default=1024.
+* drift_type: type of concept drift, one of ["dist_shift_mild", "dist_shift_severe"], default="dist_shift_mild".
+* tfm_train: tfm_train=1 for TFM training, else 0, default=0.
+* n_epochs: number of epochs, default=20.
+* adapt_reg: enable in-context adaptation for the model, default=False.
+* stack_size: queue size of the context memory, default=80.
+* gpu: the gpu device index, default=0.
 
 ### Online Inference and Adaptation
 
 Once trained, FLAIR is ready for deployment in a real-time environment, performing concurrent online inference and adaptation under evolving concepts.
+Run the following scripts for inference: 
 
 ```bash
-- python main.py --model FLAIR --data STATS --wl_type dist_shift_mild --adapt_reg True --stack_size 80
-- python main.py --model FLAIR --data STATS --wl_type dist_shift_severe --adapt_reg True --stack_size 80
+- python main.py --model FLAIR --data STATS --wl_type dist_shift_mild --adapt_reg True --stack_size 80 --gpu 1
+- python main.py --model FLAIR --data STATS --wl_type dist_shift_severe --adapt_reg True --stack_size 80 --gpu 1
 ```
 
 ## Acknowledgments
 
-This project is based on the following open-source projects:[ALECE](https://github.com/pfl-cs/ALECE), [TabPFN](https://github.com/automl/TabPFN). Thanks for their great work!
+This project is based on the following open-source projects:[ALECE](https://github.com/pfl-cs/ALECE), [TabPFN](https://github.com/automl/TabPFN). We thank their authors for making the source code publicly available.
