@@ -100,7 +100,7 @@ def eval(model, args, test_data, q_error_dir):
         infere_time = stop_i - start_i
         print('infere_time = ', infere_time, infere_time/len(preds))
     else:
-        preds = np.load('/home/jiaqi/ALECE/exp/STATS/q_error/dist_shift_mild_lt/pg.npy')
+        preds = np.load('./pg.npy')  #path for estimated card from pg
         preds = label_preds_to_card_preds(preds, args)
     labels = test_data[-1].numpy()
     labels = label_preds_to_card_preds(np.reshape(labels, [-1]), args)
@@ -227,7 +227,7 @@ def load_data(args):
     
     #update the ground truth card     
     tcards_base_path = './data/STATS/workload'  
-    test_cards_path = os.path.join(tcards_base_path, args.wl_type ,'after_train/test_card_pri.npy')
+    test_cards_path = os.path.join(tcards_base_path, args.drift_type ,'after_train/test_card_pri.npy')
     test_labels = np.load(test_cards_path)
     assert len(test_cards) == len(test_labels)
     test_cards = test_labels
@@ -287,12 +287,11 @@ if __name__ == '__main__':
     tf.config.set_visible_devices(selected_gpus, 'GPU')
     cuda_visible_devices = ','.join([str(i) for i in range(args.gpu, args.gpu + args.num_gpu)])
     os.environ['CUDA_VISIBLE_DEVICES'] = cuda_visible_devices
-    test_wl_type = args.test_wl_type
     FileViewer.detect_and_create_dir(args.experiments_dir)
 
     datasets, q_error_dir, ckpt_dir = load_data(args)
     (train_data, validation_data, test_data) = datasets
-    model_name = f'{args.model}_{args.wl_type}'
+    model_name = f'{args.model}_{args.drift_type}'
     # ====================================================
     model = FLAIR.FLAIR(selected_gpus,args)
     if args.model == 'pg':
@@ -318,12 +317,12 @@ if __name__ == '__main__':
         
         # ====================================================
         preds = preds.tolist()
-        workload_dir = arg_parser_utils.get_workload_dir(args, test_wl_type)
+        workload_dir = arg_parser_utils.get_workload_dir(args, args.test_wl_type)
         e2e_dir = os.path.join(args.experiments_dir, args.e2e_dirname)
         FileViewer.detect_and_create_dir(e2e_dir)
         train_wl_type_pre, test_wl_type_pre, pg_cards_path = arg_parser_utils.get_wl_type_pre_and_pg_cards_paths(args)
 
-        path = os.path.join(e2e_dir, f'{args.model}_{args.data}_{args.wl_type}.txt')
+        path = os.path.join(e2e_dir, f'{args.model}_{args.data}_{args.drift_type}.txt')
         print('path:', path)
         lines = [(str(x) + '\n') for x in preds]
         file_utils.write_all_lines(path, lines)

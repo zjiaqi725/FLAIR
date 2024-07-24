@@ -3,7 +3,7 @@ import argparse
 import pathlib
 
 def get_stats_arg_parser():
-    parser = argparse.ArgumentParser(description='ALECE')
+    parser = argparse.ArgumentParser(description='FLAIR')
     parser.add_argument('--data', type=str, default='STATS',
                         help='')
 
@@ -48,13 +48,13 @@ def get_stats_arg_parser():
                         help='its path is os.path.join(args.data_dir, args.tables_info_file)')
 
     # ----------------------------------- DB Params -----------------------------------
-    parser.add_argument('--db_data_dir', type=str, default='/home/jiaqi/pg_data', help='')
-    parser.add_argument('--db_name', type=str, default='jiaqi', help='')
+    parser.add_argument('--db_data_dir', type=str, default='/home/pg_data', help='')
+    parser.add_argument('--db_name', type=str, default='', help='')
     parser.add_argument('--db_subqueries_fname', type=str, default='join_sub_queries.txt', help='')
     parser.add_argument('--db_single_tbls_fname', type=str, default='single_sub_queries.txt', help='')
 
     # ----------------------------------- Model Params -----------------------------------
-    parser.add_argument('--model', type=str, default='ALECE', help='')
+    parser.add_argument('--model', type=str, default='FLAIR', help='')
     parser.add_argument('--input_dim', type=int, default=97, help='')
     parser.add_argument('--use_float64', type=int, default=0, help='')
     parser.add_argument('--latent_dim', type=int, default=256, help='dimension of latent variables.')
@@ -85,7 +85,7 @@ def get_stats_arg_parser():
     parser.add_argument('--join_pattern_dim', type=int, default=11, help='')
 
     # ----------------------------------- Training Params -----------------------------------
-    parser.add_argument('--gpu', type=int, default=1, help='')
+    parser.add_argument('--gpu', type=int, default=0, help='')
     parser.add_argument('--num_gpu', type=int, default=1, help='')
     parser.add_argument('--buffer_size', type=int, default=32, help='')
     parser.add_argument('--use_loss_weights', type=int, default=1, help='')
@@ -97,12 +97,11 @@ def get_stats_arg_parser():
     parser.add_argument('--card_log_scale', type=int, default=1, help='take logarithm of the card')
     parser.add_argument('--scaling_ratio', type=float, default=20., help='log(card)/scaling_ratio')
     parser.add_argument('--adapt_reg', type=bool, default=False, help='')
-    parser.add_argument('--stack_size', type=int, default=16, help='') #80 16
+    parser.add_argument('--stack_size', type=int, default=80, help='') 
     
     # ----------------------------------- workload Params -----------------------------------
     parser.add_argument('--wl_data_type', type=str, default='init', help='train or test')
-    parser.add_argument('--wl_type', type=str, default='ins_heavy', help='ins_heavy or upd_heavy or dist_shift')
-    parser.add_argument('--test_wl_type', type=str, default=None, help='ins_heavy or upd_heavy or dist_shift')
+    parser.add_argument('--drift_type', type=str, default='dist_shift_mild', help='dist_shift_mild or dist_shift_severe')
 
     # ----------------------------------- e2e Params -----------------------------------
     parser.add_argument('--db_task', type=str, default='query_exec',
@@ -139,12 +138,12 @@ def get_arg_parser():
     args.absolute_base_dir = args.absolute_base_dir.replace('$WORKSPACE_DIR$', workspace_dir)
 
     if args.test_wl_type is None:
-        args.test_wl_type = args.wl_type
+        args.test_wl_type = args.drift_type
 
     if args.test_wl_type == 'static':
         args.db_name = args.data.lower()
     else:
-        terms = args.wl_type.split('_')
+        terms = args.drift_type.split('_')
         wl_type_pre = terms[0]
 
         terms = args.test_wl_type.split('_')
