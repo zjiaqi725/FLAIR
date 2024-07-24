@@ -71,7 +71,7 @@ Command line options:
 * data: name of the dataset, default="STATS".
 * batch_size: batch size for training the TFM, default=1024.
 * drift_type: type of concept drift, one of ["dist_shift_mild", "dist_shift_severe"], default="dist_shift_mild".
-* tfm_train: tfm_train=1 for TFM training, else 0, default=0.
+* tfm_train: 1 for TFM training, else 0, default=0.
 * n_epochs: number of epochs, default=20.
 * adapt_reg: enable in-context adaptation for the model, default=False.
 * stack_size: queue size of the context memory, default=80.
