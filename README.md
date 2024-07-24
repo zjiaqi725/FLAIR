@@ -9,7 +9,7 @@ We propose a novel online adaptation framework called FLAIR, which can produce p
 <p align="center">
 <img src="https://github.com/zjiaqi725/FLAIR/blob/main/fig/Framework.png" width="500">  
 </p>
-As illustrated in the figure, FLAIR realizes in-context adaptation based on two cascaded modules. First, the task featurization module (TFM) is a customizable component that extracts informative and task-specific features for subsequent processing. Second, the dynamic decision engine (DDE) leverages the extracted features to deliver contextualized predictions given contextual information about the current concept.
+As illustrated in the figure, FLAIR realizes in-context adaptation based on two cascaded modules. First, the **task featurization module (TFM)** is a customizable component that extracts informative and task-specific features for subsequent processing. Second, the **dynamic decision engine (DDE)** leverages the extracted features to deliver contextualized predictions given contextual information about the current concept.
 
 ## Implementation
 
