@@ -4,6 +4,7 @@ This repository contains the code for the paper "Dances with Drifts: Efficient a
 <p align="center">
 <img src="https://github.com/zjiaqi725/FLAIR/blob/main/fig/Overview.png" width="1000">  
 </p>
+
 ## FLAIR Overview
 
 We propose a novel online adaptation framework called FLAIR, which can produce predictions adaptively under different concepts without retraining. Different from the existing approaches, FLAIR presents a new online in-context adaptation paradigm that not only addresses the concept drift challenge inherent in AI-powered databases but also supports various downstream tasks. The key intuition behind FLAIR draws from the in-context learning paradigm of large language models (LLMs), seamlessly integrating `contextual cues' from database environments to dynamically generate outputs that are acutely attuned to the current context.
