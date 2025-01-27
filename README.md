@@ -1,6 +1,6 @@
 # Dances with Drifts: Efficient and Effective In-Context Adaptation to Concept Drift for Structured Data
 
-This repository contains the code for the paper "Dances with Drifts: Efficient and Effective In-Context Adaptation to Concept Drift for Structured Data".
+This repository contains the code for the paper "In-Context Adaptation to Concept Drift for Learned Database Operations".
 <p align="center">
 <img src="https://github.com/zjiaqi725/FLAIR/blob/main/fig/Overview.png" width="1000">  
 </p>
