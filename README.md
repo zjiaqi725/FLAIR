@@ -96,7 +96,7 @@ This project is based on the following open-source projects:[ALECE](https://gith
 If you find this paper and repository useful, you are welcome to star ⭐ this repository and cite 📝 our work:
 
 ```bibtex
-@inproceedings{zhucontext,
+@inproceedings{zhu2025context,
   title={In-Context Adaptation to Concept Drift for Learned Database Operations},
   author={Zhu, Jiaqi and Cai, Shaofeng and Shen, Yanyan and Chen, Gang and Deng, Fang and Ooi, Beng Chin},
   booktitle={Forty-second International Conference on Machine Learning},
