@@ -1,6 +1,6 @@
 # Dances with Drifts: Efficient and Effective In-Context Adaptation to Concept Drift for Structured Data
 
-This repository contains the code for the paper "In-Context Adaptation to Concept Drift for Learned Database Operations".
+This repository contains the code for the paper "In-Context Adaptation to Concept Drift for Learned Database Operations" ICML 2025.
 <p align="center">
 <img src="https://github.com/zjiaqi725/FLAIR/blob/main/fig/Overview.png" width="1000">  
 </p>
@@ -90,3 +90,15 @@ Run the following scripts for inference:
 ## Acknowledgments
 
 This project is based on the following open-source projects:[ALECE](https://github.com/pfl-cs/ALECE), [TabPFN](https://github.com/automl/TabPFN). We thank their authors for making the source code publicly available.
+
+## Citation
+
+If you find this paper and repository useful, you are welcome to star ⭐ this repository and cite 📝 our work:
+
+```bibtex
+@inproceedings{zhucontext,
+  title={In-Context Adaptation to Concept Drift for Learned Database Operations},
+  author={Zhu, Jiaqi and Cai, Shaofeng and Shen, Yanyan and Chen, Gang and Deng, Fang and Ooi, Beng Chin},
+  booktitle={Forty-second International Conference on Machine Learning},
+  year={2025}
+}
